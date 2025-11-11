@@ -6,6 +6,7 @@
     <title>BedWar Clan - Official website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Theme Color Schemes */
         :root {
             --primary: #8a2be2;
             --primary-dark: #6a1cb0;
@@ -19,6 +20,39 @@
             --success: #DA2525;
             --warning: #ffaa00;
             --danger: #ff3860;
+        }
+
+        html[data-theme="cosmic"] {
+            --primary: #ff006e;
+            --primary-dark: #c9184a;
+            --secondary: #8338ec;
+            --accent: #3a86ff;
+            --dark: #0a0e27;
+            --darker: #04081a;
+            --light: #ffffff;
+            --gray: #1a1a2e;
+        }
+
+        html[data-theme="nature"] {
+            --primary: #2d6a4f;
+            --primary-dark: #1b5e3f;
+            --secondary: #52b788;
+            --accent: #95d5b2;
+            --dark: #081c15;
+            --darker: #000000;
+            --light: #d8f3dc;
+            --gray: #2d6a4f;
+        }
+
+        html[data-theme="sunset"] {
+            --primary: #ff6b35;
+            --primary-dark: #f77f00;
+            --secondary: #fcbf49;
+            --accent: #eae2b7;
+            --dark: #003049;
+            --darker: #001219;
+            --light: #ffffff;
+            --gray: #2a2a3a;
         }
 
         * {
@@ -67,7 +101,7 @@
             pointer-events: none;
         }
         
-        /* Навигация */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -100,6 +134,86 @@
             color: var(--light);
             font-size: 1.1rem;
             cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--secondary);
+            transform: rotate(180deg);
+        }
+
+        .theme-selector {
+            position: fixed;
+            top: 60px;
+            right: 15px;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            z-index: 999;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .theme-selector.active {
+            display: grid;
+        }
+
+        .theme-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option:hover {
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .theme-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-preview.default {
+            background: linear-gradient(45deg, #8a2be2, #00ffff);
+        }
+
+        .theme-preview.cosmic {
+            background: linear-gradient(45deg, #ff006e, #8338ec);
+        }
+
+        .theme-preview.nature {
+            background: linear-gradient(45deg, #2d6a4f, #52b788);
+        }
+
+        .theme-preview.sunset {
+            background: linear-gradient(45deg, #ff6b35, #fcbf49);
+        }
+
+        .theme-option span {
+            font-size: 0.8rem;
+            color: var(--light);
         }
 
         .nav-menu {
@@ -144,7 +258,7 @@
             padding: 60px 12px 15px;
         }
 
-        /* . */
+        /* Header */
         .header {
             text-align: center;
             padding: 15px 12px;
@@ -177,7 +291,7 @@
             font-weight: 300;
         }
 
-        /* секции */
+        /* Sections */
         .section {
             margin-bottom: 20px;
         }
@@ -209,7 +323,7 @@
             font-size: 0.9rem;
         }
 
-        /* карточки */
+        /* Cards */
         .cards-container {
             display: grid;
             grid-template-columns: 1fr;
@@ -228,6 +342,7 @@
             opacity: 0;
             transform: translateY(15px);
             animation: fadeInUp 0.5s ease forwards;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -390,7 +505,17 @@
             color: white;
         }
 
-        /* поиск */
+        .tag-discord {
+            background: linear-gradient(45deg, #5865F2, #7289DA);
+            color: white;
+        }
+
+        .tag-telegram {
+            background: linear-gradient(45deg, #0088cc, #00A8E8);
+            color: white;
+        }
+
+        /* Search */
         .search-container {
             position: relative;
             margin-bottom: 15px;
@@ -422,7 +547,7 @@
             font-size: 0.8rem;
         }
 
-        /* Не найдено по поиску */
+        /* No Results */
         .no-results {
             text-align: center;
             padding: 30px 20px;
@@ -447,7 +572,7 @@
             opacity: 0.8;
         }
 
-        /* Кнопка навигации */
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -484,7 +609,7 @@
             transform: translateY(-2px);
         }
 
-        /* Скролл наверх */
+        /* Scroll to Top */
         .scroll-top {
             position: fixed;
             bottom: 55px;
@@ -516,7 +641,143 @@
             transform: translateY(-3px);
         }
 
-        /* Анимации */
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 90%;
+            width: 400px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .modal-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin-right: 12px;
+        }
+
+        .modal-user-info {
+            flex: 1;
+        }
+
+        .modal-username {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-user-id {
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff3860;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-tag {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .social-link {
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(138, 43, 226, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .add-social-btn {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px dashed var(--secondary);
+            color: var(--secondary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .add-social-btn:hover {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        /* Animations */
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -533,7 +794,7 @@
             }
         }
 
-        /* Стилт поиска */
+        /* Search Mode Styles */
         .search-mode .section-title {
             display: none;
         }
@@ -542,7 +803,7 @@
             display: none;
         }
 
-        /* таблет */
+        /* Tablet */
         @media (min-width: 768px) {
             .container {
                 max-width: 720px;
@@ -587,7 +848,7 @@
             }
         }
 
-        /* десктоп */
+        /* Desktop */
         @media (min-width: 992px) {
             .container {
                 max-width: 960px;
@@ -603,7 +864,7 @@
             }
         }
 
-        /* большой экран */
+        /* Large Screen */
         @media (min-width: 1200px) {
             .container {
                 max-width: 1140px;
@@ -618,17 +879,17 @@
 <body>
     <div class="particles" id="particles"></div>
     
-    <!-- верхняя навигация -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">BedWar</div>
         <button class="nav-toggle" id="navToggle">
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-menu" id="navMenu">
-            <a href="#chief" class="nav-item active">
+            <a href="#chief" class="nav-item">
                 <i class="fas fa-crown"></i> Chief
             </a>
-            <a href="#elders" class="nav-item">
+            <a href="#elders" class="nav-item active">
                 <i class="fas fa-shield-alt"></i> Elders
             </a>
             <a href="#former-elders" class="nav-item">
@@ -638,518 +899,88 @@
                 <i class="fas fa-code"></i> Devs
             </a>
         </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-selector" id="themeSelector">
+            <div class="theme-option" data-theme="">
+                <div class="theme-preview default"></div>
+                <span>Default</span>
+            </div>
+            <div class="theme-option" data-theme="cosmic">
+                <div class="theme-preview cosmic"></div>
+                <span>Cosmic</span>
+            </div>
+            <div class="theme-option" data-theme="nature">
+                <div class="theme-preview nature"></div>
+                <span>Nature</span>
+            </div>
+            <div class="theme-option" data-theme="sunset">
+                <div class="theme-preview sunset"></div>
+                <span>Sunset</span>
+            </div>
+        </div>
     </nav>
     
     <div class="container">
-        <!-- хедер -->
+        <!-- Header -->
         <header class="header">
             <h1 class="clan-name">___BedWar___</h1>
             <p class="subtitle">The official website of the clan</p>
         </header>
 
-        <!-- поиск -->
+        <!-- Search -->
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" class="search-input" id="searchInput" placeholder="Search members... (nickname / id / tags)">
         </div>
 
-        <!-- нет ресзультатов поиска -->
+        <!-- No Results -->
         <div class="no-results" id="noResults">
             <i class="fas fa-search"></i>
             <h3>No members found</h3>
             <p>Try searching with a different nickname or ID</p>
         </div>
 
-        <!-- секции и карточки -->
-        <section class="section" id="chief">
-            <h2 class="section-title">
-                <i class="fas fa-crown"></i> Clan Chief:
-            </h2>
-            <div class="cards-container">
-                <div class="card" data-roles="leader">
-                    <div class="card-header">
-                        <img src="pic/3884743936.png" alt="BlockmanGoTalk" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                BlockmanGoTalk
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 3884743936</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-leader">
-                                <i class="fas fa-crown"></i> Clan Chief
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> BG Helper
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> BW Helper
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> SandMod Helper
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> BW Builder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> Own Games Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="elders">
-            <h2 class="section-title">
-                <i class="fas fa-shield-alt"></i> Clan Elders:
-            </h2>
-            <div class="cards-container">
-                <div class="card" data-roles="elder">
-                    <div class="card-header">
-                        <img src="pic/1220407424.png" alt="IamNotOst" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                IamNotOst
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 1220407424</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-code"></i> BG Assistant
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> BW Helper
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> BW Builder
-                            </div>
-                            <div class="tag tag-tg">
-                                <i class="fas fa-paint-brush"></i> BG mod in Telegram
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-roles="elder developer">
-                    <div class="card-header">
-                        <img src="pic/910814478.png" alt="Ba46.." class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Ba46..
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 910814478</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BW Developer
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> Mining Tycoon Developer
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> SB-World Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="elder developer">
-                    <div class="card-header">
-                        <img src="pic/336.png" alt="Mk" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Mk
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 336</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BG Developer
-                            </div>
-                            <div class="tag tag-community">
-                                <i class="fas fa-users"></i> Community Manager
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="elder developer">
-                    <div class="card-header">
-                        <img src="pic/80.png" alt="cod......" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                cod......
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 80</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BG Developer
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BG Clan Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="elder">
-                    <div class="card-header">
-                        <img src="pic/1787245904.png" alt="Ville." class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Ville.
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 1787245904</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> BW Helper
-                            </div>
-                            <div class="tag tag-officer">
-                                <i class="fas fa-user-shield"></i> BW Chief Officer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="elder">
-                    <div class="card-header">
-                        <img src="pic/2682605168.png" alt="ShahBG." class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                ShahBG.
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 2682605168</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-elder">
-                                <i class="fas fa-shield-alt"></i> Clan Elder
-                            </div>
-                            <div class="tag tag-moderator">
-                                <i class="fas fa-user-shield"></i> BW Senior Mod
-                            </div>
-                            <div class="tag tag-moderator">
-                                <i class="fas fa-user-shield"></i> BG Mod
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-      
-        <section class="section" id="former-elders">
-            <h2 class="section-title">
-                <i class="fas fa-history"></i> Old Clan Elders:
-            </h2>
-            <div class="cards-container">
-                <div class="card" data-roles="former">
-                    <div class="card-header">
-                        <img src="pic/3487699984.png" alt="MenAce" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                MenAce
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 3487699984</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-former">
-                                <i class="fas fa-history"></i> Old Clan Elder
-                            </div>
-                            <div class="tag tag-og">
-                                <i class="fas fa-medal"></i> OG Clan Member
-                            </div>
-                            <div class="tag tag-former">
-                                <i class="fas fa-user-shield"></i> Old BW Mod
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-roles="former">
-                    <div class="card-header">
-                        <img src="pic/3782867712.png" alt="Sazaki." class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Sazaki.
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 3782867712</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-former">
-                                <i class="fas fa-history"></i> Old Clan Elder
-                            </div>
-                            <div class="tag tag-former">
-                                <i class="fas fa-user-shield"></i> Old BG Mod
-                            </div>
-                            <div class="tag tag-former">
-                                <i class="fas fa-tools"></i> Old BG Helper
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="former builder">
-                    <div class="card-header">
-                        <img src="pic/2692662464.png" alt="IVE" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                IVE
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 2692662464</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-former">
-                                <i class="fas fa-history"></i> Old Clan Elder
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> SB Builder
-                            </div>
-                            <div class="tag tag-former">
-                                <i class="fas fa-tools"></i> Old SB Helper
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="former builder">
-                    <div class="card-header">
-                        <img src="pic/564432.png" alt="WinexOfficial" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                WinexOfficial
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 564432</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-former">
-                                <i class="fas fa-history"></i> Old Clan Elder
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> BW Builder
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> SB Builder
-                            </div>
-                            <div class="tag tag-assistant">
-                                <i class="fas fa-tools"></i> SB Helper
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="developers">
-            <h2 class="section-title">
-                <i class="fas fa-code"></i> Other Developers:
-            </h2>
-            <div class="cards-container">
-                <div class="card" data-roles="developer">
-                    <div class="card-header">
-                        <img src="pic/224.png" alt="Gilbert" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Gilbert
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 224</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BG Developer
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> SandMod Developer
-                            </div>
-                            <div class="tag tag-community">
-                                <i class="fas fa-users"></i> Community Manager
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-roles="developer builder">
-                    <div class="card-header">
-                        <img src="pic/5879435198.png" alt="qiqi7777777" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                qiqi7777777
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 5879435198</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-trial">
-                                <i class="fas fa-code"></i> BW Trial Developer
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> BW Builder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-vial"></i> BW Tester
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card" data-roles="developer builder">
-                    <div class="card-header">
-                        <img src="pic/240.png" alt="Suiik.=" class="avatar">
-                        <div class="user-info">
-                            <div class="username">
-                                Suiik.=
-                                <span class="verified">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                            </div>
-                            <div class="user-id">ID: 240</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-dev">
-                                <i class="fas fa-code"></i> BW Developer
-                            </div>
-                            <div class="tag tag-builder">
-                                <i class="fas fa-hammer"></i> BW Builder
-                            </div>
-                            <div class="tag tag-dev">
-                                <i class="fas fa-vial"></i> BW Tester
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="stats">
-            <h2 class="section-title">
-                <i class="fas fa-chart-bar"></i> Clan Statistics:
-            </h2>
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-users" style="font-size: 1.5rem; color: var(--secondary); margin-right: 10px;"></i>
-                        <div class="user-info">
-                            <div class="username">Roles:</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-leader">1 x Clan Chief</div>
-                            <div class="tag tag-elder">6 x Clan Elders</div>
-                            <div class="tag tag-former">4 x Old Clan Elders</div>
-                            <div class="tag tag-dev">6 x Developers</div>
-                            <div class="tag tag-assistant">5 x BG/BW/SB Helpers</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-gamepad" style="font-size: 1.5rem; color: var(--secondary); margin-right: 10px;"></i>
-                        <div class="user-info">
-                            <div class="username">Clan Alliances:</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tags">
-                            <div class="tag tag-dev">IMT</div>
-                            <div class="tag tag-dev"> ▥ＥｚＺ</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Sections will be populated by JavaScript -->
+        <div id="sections-container"></div>
     </div>
 
-    <!-- кнопки навигации для телефонов -->
+    <!-- Member Modal -->
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="" class="modal-avatar" id="modalAvatar">
+                <div class="modal-user-info">
+                    <div class="modal-username" id="modalUsername">
+                        <span id="modalName"></span>
+                        <span class="verified">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
+                    </div>
+                    <div class="modal-user-id" id="modalUserId"></div>
+                </div>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-tags" id="modalTags"></div>
+            <div class="social-links" id="socialLinks">
+                <!-- Social links will be added here -->
+            </div>
+            <button class="add-social-btn" id="addSocialBtn">
+                <i class="fas fa-plus"></i> Add Discord/Telegram
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
     <div class="bottom-nav">
-        <a href="#chief" class="nav-btn active">
+        <a href="#chief" class="nav-btn">
             <i class="fas fa-crown"></i>
             <span>Chief</span>
         </a>
-        <a href="#elders" class="nav-btn">
+        <a href="#elders" class="nav-btn active">
             <i class="fas fa-shield-alt"></i>
             <span>Elders</span>
         </a>
@@ -1163,13 +994,407 @@
         </a>
     </div>
 
-    <!-- скролл наверх -->
-    <div class="scroll-top" id="scrollTop">
+    <!-- Scroll to Top -->
+    <div class="scroll-top active" id="scrollTop">
         <i class="fas fa-chevron-up"></i>
     </div>
 
     <script>
-        // партиклы на фоне
+        // Member Data - Easy to manage and add new members
+        const memberData = {
+            "chief": {
+                title: "Clan Chief",
+                icon: "fa-crown",
+                members: [
+                    {
+                        id: "3884743936",
+                        name: "BlockmanGoTalk",
+                        avatar: "pic/3884743936.png",
+                        tags: [
+                            { type: "leader", text: "Clan Chief", icon: "fa-crown" },
+                            { type: "assistant", text: "BG Helper", icon: "fa-tools" },
+                            { type: "assistant", text: "BW Helper", icon: "fa-tools" },
+                            { type: "assistant", text: "SandMod Helper", icon: "fa-tools" },
+                            { type: "builder", text: "BW Builder", icon: "fa-hammer" },
+                            { type: "dev", text: "Own Games Developer", icon: "fa-code" }
+                        ],
+                        social: [
+                            { type: "discord", username: "BlockmanGoTalk#1234" },
+                            { type: "telegram", username: "@BlockmanGoTalk" }
+                        ]
+                    }
+                ]
+            },
+            "elders": {
+                title: "Clan Elders",
+                icon: "fa-shield-alt",
+                members: [
+                    {
+                        id: "1220407424",
+                        name: "IamNotOst",
+                        avatar: "pic/1220407424.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "assistant", text: "BG Assistant", icon: "fa-code" },
+                            { type: "assistant", text: "BW Helper", icon: "fa-tools" },
+                            { type: "builder", text: "BW Builder", icon: "fa-hammer" },
+                            { type: "tg", text: "BG mod in Telegram", icon: "fa-paint-brush" }
+                        ],
+                        social: [
+                            { type: "discord", username: "IamNotOst#5678" }
+                        ]
+                    },
+                    {
+                        id: "910814478",
+                        name: "Ba46..",
+                        avatar: "pic/910814478.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "dev", text: "BW Developer", icon: "fa-code" },
+                            { type: "dev", text: "Mining Tycoon Developer", icon: "fa-code" },
+                            { type: "dev", text: "SB-World Developer", icon: "fa-code" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "336",
+                        name: "Mk",
+                        avatar: "pic/336.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "dev", text: "BG Developer", icon: "fa-code" },
+                            { type: "community", text: "Community Manager", icon: "fa-users" }
+                        ],
+                        social: [
+                            { type: "telegram", username: "@MkOfficial" }
+                        ]
+                    },
+                    {
+                        id: "80",
+                        name: "cod......",
+                        avatar: "pic/80.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "dev", text: "BG Developer", icon: "fa-code" },
+                            { type: "dev", text: "BG Clan Developer", icon: "fa-code" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "1787245904",
+                        name: "Ville.",
+                        avatar: "pic/1787245904.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "assistant", text: "BW Helper", icon: "fa-tools" },
+                            { type: "officer", text: "BW Chief Officer", icon: "fa-user-shield" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "2682605168",
+                        name: "ShahBG.",
+                        avatar: "pic/2682605168.png",
+                        tags: [
+                            { type: "elder", text: "Clan Elder", icon: "fa-shield-alt" },
+                            { type: "moderator", text: "BW Senior Mod", icon: "fa-user-shield" },
+                            { type: "moderator", text: "BG Mod", icon: "fa-user-shield" }
+                        ],
+                        social: []
+                    }
+                ]
+            },
+            "former-elders": {
+                title: "Old Clan Elders",
+                icon: "fa-history",
+                members: [
+                    {
+                        id: "3487699984",
+                        name: "MenAce",
+                        avatar: "pic/3487699984.png",
+                        tags: [
+                            { type: "former", text: "Old Clan Elder", icon: "fa-history" },
+                            { type: "og", text: "OG Clan Member", icon: "fa-medal" },
+                            { type: "former", text: "Old BW Mod", icon: "fa-user-shield" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "3782867712",
+                        name: "Sazaki.",
+                        avatar: "pic/3782867712.png",
+                        tags: [
+                            { type: "former", text: "Old Clan Elder", icon: "fa-history" },
+                            { type: "former", text: "Old BG Mod", icon: "fa-user-shield" },
+                            { type: "former", text: "Old BG Helper", icon: "fa-tools" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "2692662464",
+                        name: "IVE",
+                        avatar: "pic/2692662464.png",
+                        tags: [
+                            { type: "former", text: "Old Clan Elder", icon: "fa-history" },
+                            { type: "builder", text: "SB Builder", icon: "fa-hammer" },
+                            { type: "former", text: "Old SB Helper", icon: "fa-tools" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "564432",
+                        name: "WinexOfficial",
+                        avatar: "pic/564432.png",
+                        tags: [
+                            { type: "former", text: "Old Clan Elder", icon: "fa-history" },
+                            { type: "builder", text: "BW Builder", icon: "fa-hammer" },
+                            { type: "builder", text: "SB Builder", icon: "fa-hammer" },
+                            { type: "assistant", text: "SB Helper", icon: "fa-tools" }
+                        ],
+                        social: []
+                    }
+                ]
+            },
+            "developers": {
+                title: "Other Developers",
+                icon: "fa-code",
+                members: [
+                    {
+                        id: "224",
+                        name: "Gilbert",
+                        avatar: "pic/224.png",
+                        tags: [
+                            { type: "dev", text: "BG Developer", icon: "fa-code" },
+                            { type: "dev", text: "SandMod Developer", icon: "fa-code" },
+                            { type: "community", text: "Community Manager", icon: "fa-users" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "5879435198",
+                        name: "qiqi7777777",
+                        avatar: "pic/5879435198.png",
+                        tags: [
+                            { type: "trial", text: "BW Trial Developer", icon: "fa-code" },
+                            { type: "builder", text: "BW Builder", icon: "fa-hammer" },
+                            { type: "dev", text: "BW Tester", icon: "fa-vial" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "240",
+                        name: "Suiik.=",
+                        avatar: "pic/240.png",
+                        tags: [
+                            { type: "dev", text: "BW Developer", icon: "fa-code" },
+                            { type: "builder", text: "BW Builder", icon: "fa-hammer" },
+                            { type: "dev", text: "BW Tester", icon: "fa-vial" }
+                        ],
+                        social: []
+                    }
+                ]
+            }
+        };
+
+        // Function to generate HTML from member data
+        function generateSections() {
+            const container = document.getElementById('sections-container');
+            container.innerHTML = '';
+
+            for (const [sectionId, sectionData] of Object.entries(memberData)) {
+                const section = document.createElement('section');
+                section.className = 'section';
+                section.id = sectionId;
+
+                const sectionTitle = document.createElement('h2');
+                sectionTitle.className = 'section-title';
+                sectionTitle.innerHTML = `<i class="fas ${sectionData.icon}"></i> ${sectionData.title}:`;
+                section.appendChild(sectionTitle);
+
+                const cardsContainer = document.createElement('div');
+                cardsContainer.className = 'cards-container';
+
+                sectionData.members.forEach(member => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.setAttribute('data-roles', member.tags.map(tag => tag.type).join(' '));
+                    card.style.animationPlayState = 'running';
+
+                    // Store member data for modal
+                    card.setAttribute('data-member', JSON.stringify(member));
+
+                    const cardHeader = document.createElement('div');
+                    cardHeader.className = 'card-header';
+
+                    const avatar = document.createElement('img');
+                    avatar.src = member.avatar;
+                    avatar.alt = member.name;
+                    avatar.className = 'avatar';
+
+                    const userInfo = document.createElement('div');
+                    userInfo.className = 'user-info';
+
+                    const username = document.createElement('div');
+                    username.className = 'username';
+                    username.innerHTML = `${member.name} <span class="verified"><i class="fas fa-check-circle"></i></span>`;
+
+                    const userId = document.createElement('div');
+                    userId.className = 'user-id';
+                    userId.textContent = `ID: ${member.id}`;
+
+                    userInfo.appendChild(username);
+                    userInfo.appendChild(userId);
+
+                    cardHeader.appendChild(avatar);
+                    cardHeader.appendChild(userInfo);
+
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body';
+
+                    const tags = document.createElement('div');
+                    tags.className = 'tags';
+
+                    member.tags.forEach(tag => {
+                        const tagElement = document.createElement('div');
+                        tagElement.className = `tag tag-${tag.type}`;
+                        tagElement.innerHTML = `<i class="fas ${tag.icon}"></i> ${tag.text}`;
+                        tags.appendChild(tagElement);
+                    });
+
+                    cardBody.appendChild(tags);
+
+                    card.appendChild(cardHeader);
+                    card.appendChild(cardBody);
+                    cardsContainer.appendChild(card);
+                });
+
+                section.appendChild(cardsContainer);
+                container.appendChild(section);
+            }
+
+            // Add event listeners to cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const memberData = JSON.parse(this.getAttribute('data-member'));
+                    openMemberModal(memberData);
+                });
+            });
+        }
+
+        // Modal functionality
+        function openMemberModal(member) {
+            const modal = document.getElementById('memberModal');
+            const modalAvatar = document.getElementById('modalAvatar');
+            const modalName = document.getElementById('modalName');
+            const modalUserId = document.getElementById('modalUserId');
+            const modalTags = document.getElementById('modalTags');
+            const socialLinks = document.getElementById('socialLinks');
+
+            // Set modal content
+            modalAvatar.src = member.avatar;
+            modalAvatar.alt = member.name;
+            modalName.textContent = member.name;
+            modalUserId.textContent = `ID: ${member.id}`;
+
+            // Set tags
+            modalTags.innerHTML = '';
+            member.tags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = `modal-tag tag-${tag.type}`;
+                tagElement.innerHTML = `<i class="fas ${tag.icon}"></i> ${tag.text}`;
+                modalTags.appendChild(tagElement);
+            });
+
+            // Set social links
+            socialLinks.innerHTML = '';
+            member.social.forEach(social => {
+                const socialLink = document.createElement('a');
+                socialLink.href = '#';
+                socialLink.className = 'social-link';
+                socialLink.innerHTML = `<i class="fab fa-${social.type}"></i> ${social.username}`;
+                socialLinks.appendChild(socialLink);
+            });
+
+            // Show modal
+            modal.classList.add('active');
+        }
+
+        // Close modal
+        document.getElementById('modalClose').addEventListener('click', function() {
+            document.getElementById('memberModal').classList.remove('active');
+        });
+
+        // Add social button functionality
+        document.getElementById('addSocialBtn').addEventListener('click', function() {
+            alert('This would open a form to add Discord/Telegram links in a real application.');
+            // In a real app, you would implement a form to add social links
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('memberModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Theme System
+        const themeToggle = document.getElementById('themeToggle');
+        const themeSelector = document.getElementById('themeSelector');
+        const themeOptions = document.querySelectorAll('.theme-option');
+
+        // Toggle theme selector
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeSelector.classList.toggle('active');
+        });
+
+        // Handle theme selection
+        themeOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const selectedTheme = option.getAttribute('data-theme');
+                
+                // Get the HTML element
+                const html = document.documentElement;
+                
+                // Remove all existing theme attributes
+                html.removeAttribute('data-theme');
+                
+                // Apply new theme if not empty
+                if (selectedTheme) {
+                    html.setAttribute('data-theme', selectedTheme);
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('selectedTheme', selectedTheme);
+                
+                // Close selector
+                themeSelector.classList.remove('active');
+            });
+        });
+
+        // Close theme selector when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!themeToggle.contains(e.target) && !themeSelector.contains(e.target)) {
+                themeSelector.classList.remove('active');
+            }
+        });
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+            
+            // Generate sections from data
+            generateSections();
+            
+            // Initialize other functionality
+            initializeApp();
+        });
+
+        // Create Particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 25;
@@ -1190,174 +1415,179 @@
             }
         }
 
-        // мобилка меню
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
+        // Mobile Menu Toggle
+        function initializeApp() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+                
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.innerHTML = navMenu.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
 
-        // функционал поиска
-        const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.card');
-        const sections = document.querySelectorAll('.section');
-        const noResults = document.getElementById('noResults');
-        const container = document.querySelector('.container');
-        
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            let foundResults = false;
-            let totalVisibleCards = 0;
-            
-            
-          //возвратткаточек и секций
-            cards.forEach(card => {
-                card.style.display = 'block';
-            });
-            
-            sections.forEach(section => {
-                section.classList.remove('has-results');
-            });
-            
-            // если поиск не активиоован
-            if (searchTerm === '') {
-                container.classList.remove('search-mode');
-                noResults.style.display = 'none';
-                return;
-            }
-            
-            // акцитивация поиска
-            container.classList.add('search-mode');
-            
-            // поиск карточек
-            cards.forEach(card => {
-                const username = card.querySelector('.username').textContent.toLowerCase();
-                const userId = card.querySelector('.user-id').textContent.toLowerCase();
-                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+            // Search Functionality
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const container = document.querySelector('.container');
                 
-                const matchesSearch = username.includes(searchTerm) || 
-                                   userId.includes(searchTerm) ||
-                                   tags.some(tag => tag.includes(searchTerm));
-                
-                if (matchesSearch) {
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.card');
+                const sections = document.querySelectorAll('.section');
+                let foundResults = false;
+                let totalVisibleCards = 0;
+                    
+                // Reset all cards and sections
+                cards.forEach(card => {
                     card.style.display = 'block';
-                    foundResults = true;
-                    totalVisibleCards++;
+                });
                     
-                    // сложная часть
-                    const section = card.closest('.section');
-                    if (section) {
-                        section.classList.add('has-results');
+                sections.forEach(section => {
+                    section.classList.remove('has-results');
+                });
+                    
+                // If search is empty, show all sections
+                if (searchTerm === '') {
+                    container.classList.remove('search-mode');
+                    noResults.style.display = 'none';
+                    return;
+                }
+                    
+                // Activate search mode
+                container.classList.add('search-mode');
+                    
+                // Search through cards
+                cards.forEach(card => {
+                    const member = JSON.parse(card.getAttribute('data-member'));
+                    const username = member.name.toLowerCase();
+                    const userId = member.id.toLowerCase();
+                    const tags = member.tags.map(tag => tag.text.toLowerCase());
+                        
+                    const matchesSearch = username.includes(searchTerm) || 
+                                       userId.includes(searchTerm) ||
+                                       tags.some(tag => tag.includes(searchTerm));
+                        
+                    if (matchesSearch) {
+                        card.style.display = 'block';
+                        foundResults = true;
+                        totalVisibleCards++;
+                            
+                        // Mark section as having results
+                        const section = card.closest('.section');
+                        if (section) {
+                            section.classList.add('has-results');
+                        }
+                    } else {
+                        card.style.display = 'none';
                     }
+                });
+                    
+                if (foundResults) {
+                    noResults.style.display = 'none';
                 } else {
-                    card.style.display = 'none';
+                    noResults.style.display = 'block';
                 }
             });
-            
-            if (foundResults) {
-                noResults.style.display = 'none';
-            } else {
-                noResults.style.display = 'block';
-            }
-        });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 60,
-                        behavior: 'smooth'
-                    });
-                    
-                    if (window.innerWidth < 768) {
-                        navMenu.classList.remove('active');
-                        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            // Smooth Scroll for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                        
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                        
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 60,
+                            behavior: 'smooth'
+                        });
+                        
+                        if (window.innerWidth < 768) {
+                            navMenu.classList.remove('active');
+                            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
                     }
-                }
+                });
             });
-        });
 
-        const navItems = document.querySelectorAll('.nav-item');
-        const bottomNavItems = document.querySelectorAll('.nav-btn');
-        
-        function updateActiveNav() {
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+            // Active Navigation State
+            const navItems = document.querySelectorAll('.nav-item');
+            const bottomNavItems = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('.section');
                 
-                if (window.scrollY >= sectionTop - 80) {
-                    currentSection = section.id;
-                }
-            });
-            
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${currentSection}`) {
-                    item.classList.add('active');
-                }
-            });
-            
-            bottomNavItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${currentSection}`) {
-                    item.classList.add('active');
-                }
-            });
-        }
-
-        const scrollTopBtn = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            updateActiveNav();
-            
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
+            function updateActiveNav() {
+                let currentSection = '';
+                    
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                        
+                    if (window.scrollY >= sectionTop - 80) {
+                        currentSection = section.id;
+                    }
+                });
+                    
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${currentSection}`) {
+                        item.classList.add('active');
+                    }
+                });
+                    
+                bottomNavItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${currentSection}`) {
+                        item.classList.add('active');
+                    }
+                });
             }
-        });
 
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
+            // Scroll to Top Button
+            const scrollTopBtn = document.getElementById('scrollTop');
+                
+            window.addEventListener('scroll', () => {
+                updateActiveNav();
+                    
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
                 }
             });
-        }, observerOptions);
 
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.animationPlayState = 'paused';
-            observer.observe(card);
-        });
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
 
-        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for Card Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.animationPlayState = 'paused';
+                observer.observe(card);
+            });
+
             createParticles();
             updateActiveNav();
-        });
+        }
     </script>
 </body>
-</html>
+    </html>
