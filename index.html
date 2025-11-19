@@ -100,7 +100,7 @@
             z-index: -1;
             pointer-events: none;
         }
-        
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -417,6 +417,13 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-id:hover {
+            opacity: 1;
+            color: var(--light);
         }
 
         .card-body {
@@ -460,6 +467,21 @@
             color: white;
         }
 
+        .tag-additional {
+            background: linear-gradient(45deg, var(--warning), #17941d);
+            color: #ffffff
+        }
+
+        .tag-yt {
+            background: linear-gradient(45deg, var(--warning), #ff0000);
+            color: #ffffff
+        }
+
+        .tag-member {
+            background: linear-gradient(45deg, var(--warning), #3e7450);
+            color: #ffffff
+        }
+
         .tag-dev {
             background: linear-gradient(45deg, var(--success), #FC7B03);
             color: white;
@@ -471,12 +493,12 @@
         }
 
         .tag-assistant {
-            background: linear-gradient(45deg, #3399ff, #0066cc);
+            background: linear-gradient(45deg, #3399ff, #a33716);
             color: white;
         }
 
         .tag-builder {
-            background: linear-gradient(45deg, #9966ff, #6600cc);
+            background: linear-gradient(45deg, #1cb970, #350831);
             color: white;
         }
 
@@ -512,6 +534,41 @@
 
         .tag-telegram {
             background: linear-gradient(45deg, #0088cc, #00A8E8);
+            color: white;
+        }
+
+        .tag-wechat {
+            background: linear-gradient(45deg, #07C160, #09BB07);
+            color: white;
+        }
+
+        .tag-member {
+            background: linear-gradient(45deg, #666, #999);
+            color: white;
+        }
+
+        .tag-friend {
+            background: linear-gradient(45deg, #ff66cc, #ff3399);
+            color: white;
+        }
+
+        .tag-bgtuber {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: white;
+        }
+
+        .tag-bug-hunter {
+            background: linear-gradient(45deg, #8a2be2, #4b0082);
+            color: white;
+        }
+
+        .tag-bot {
+            background: linear-gradient(45deg, #666, #333);
+            color: white;
+        }
+
+        .tag-map-builder {
+            background: linear-gradient(45deg, #ff9900, #ff6600);
             color: white;
         }
 
@@ -570,6 +627,85 @@
         .no-results p {
             font-size: 0.85rem;
             opacity: 0.8;
+        }
+
+        /* Show More Button */
+        .show-more {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .show-more-btn {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .show-more-btn:hover {
+            background: rgba(138, 43, 226, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Compact Grid for Many Members */
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+        }
+
+        .compact-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .compact-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .compact-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin: 0 auto 8px;
+            object-fit: cover;
+        }
+
+        .compact-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .compact-id {
+            font-size: 0.65rem;
+            color: var(--secondary);
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .compact-id:hover {
+            opacity: 1;
+            color: var(--light);
         }
 
         /* Bottom Navigation */
@@ -702,6 +838,13 @@
         .modal-user-id {
             font-size: 0.8rem;
             color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-user-id:hover {
+            color: var(--light);
+            opacity: 1;
         }
 
         .modal-close {
@@ -771,10 +914,117 @@
             align-items: center;
             gap: 5px;
             transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
         }
 
         .add-social-btn:hover {
             background: rgba(0, 255, 255, 0.3);
+        }
+
+        .favorite-btn {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.5);
+            color: #ffc107;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .favorite-btn:hover {
+            background: rgba(255, 193, 7, 0.3);
+        }
+
+        .favorite-btn.favorited {
+            background: rgba(255, 193, 7, 0.4);
+            color: #ffc107;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .quick-actions,
+        .compact-card:hover .quick-actions {
+            opacity: 1;
+        }
+
+        .quick-action-btn {
+            background: rgba(138, 43, 226, 0.8);
+            border: none;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        .status-online {
+            background: #07C160;
+            box-shadow: 0 0 5px #07C160;
+        }
+
+        .status-offline {
+            background: #666;
+        }
+
+        .status-away {
+            background: #ffaa00;
+            box-shadow: 0 0 5px #ffaa00;
+        }
+
+        .status-busy {
+            background: #ff3860;
+            box-shadow: 0 0 5px #ff3860;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 0.85rem;
         }
 
         /* Animations */
@@ -794,13 +1044,15 @@
             }
         }
 
-        /* Search Mode Styles */
-        .search-mode .section-title {
-            display: none;
-        }
-
-        .search-mode .section:not(.has-results) {
-            display: none;
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         /* Tablet */
@@ -809,20 +1061,25 @@
                 max-width: 720px;
                 padding: 70px 15px 20px;
             }
-            
+
             .cards-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-            
+
+            .compact-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 12px;
+            }
+
             .clan-name {
                 font-size: 2rem;
             }
-            
+
             .navbar {
                 padding: 10px 20px;
             }
-            
+
             .nav-menu {
                 position: static;
                 width: auto;
@@ -833,16 +1090,16 @@
                 flex-direction: row;
                 gap: 15px;
             }
-            
+
             .nav-toggle {
                 display: none;
             }
-            
+
             .nav-item {
                 padding: 6px 12px;
                 font-size: 0.85rem;
             }
-            
+
             .bottom-nav {
                 display: none;
             }
@@ -853,12 +1110,17 @@
             .container {
                 max-width: 960px;
             }
-            
+
             .cards-container {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
-            
+
+            .compact-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
             .clan-name {
                 font-size: 2.2rem;
             }
@@ -869,16 +1131,78 @@
             .container {
                 max-width: 1140px;
             }
-            
+
             .cards-container {
                 gap: 18px;
             }
+
+            .compact-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 18px;
+            }
         }
-    </style>
+
+/* ===== ADDED (non-destructive): language selector + official menu styles ===== */
+#langSelectAdded, #langSelectAdded option {
+    background: rgba(20,20,30,0.6);
+    color: var(--light);
+}
+#langSelectAdded {
+    border: 1px solid rgba(138,43,226,0.18);
+    padding: 6px 8px;
+    border-radius: 8px;
+    color: var(--light);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#officialBtnAdded {
+    background: rgba(10,10,20,0.45);
+    border: 1px solid rgba(138,43,226,0.12);
+    padding: 8px;
+    border-radius: 8px;
+    color: var(--light);
+    cursor: pointer;
+}
+
+#officialMenuAdded .social-link {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--light);
+    transition:background 0.18s, transform 0.12s;
+}
+
+#officialMenuAdded .social-link:hover {
+    background: rgba(138,43,226,0.12);
+    transform:translateY(-2px);
+}
+
+/* Make the big BlockmanGo buttons consistent */
+#blockmango-official .show-more-btn {
+    background: rgba(138,43,226,0.12);
+    border: 1px solid rgba(138,43,226,0.25);
+    color: var(--secondary);
+    padding:8px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* responsive tweaks */
+@media (max-width: 767px) {
+    #officialMenuAdded { right:4px; left:auto; top:48px; min-width:180px; }
+    #blockmango-official .show-more-btn { padding:7px 10px; font-size:0.85rem; }
+}
+/* ===== END ADDED CSS ===== */
+</style>
 </head>
 <body>
     <div class="particles" id="particles"></div>
-    
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">BedWar</div>
@@ -897,6 +1221,9 @@
             </a>
             <a href="#developers" class="nav-item">
                 <i class="fas fa-code"></i> Devs
+            </a>
+            <a href="#members" class="nav-item">
+                <i class="fas fa-users"></i> Clan Members
             </a>
         </div>
         <button class="theme-toggle" id="themeToggle">
@@ -920,16 +1247,85 @@
                 <span>Sunset</span>
             </div>
         </div>
-    </nav>
-    
+
+    <!-- ADDED: Language selector + Official links dropdown (non-destructive insertion) -->
+    <div style="display:flex; align-items:center; gap:8px; margin-left:12px;">
+        <!-- Language selector -->
+        <div id="langWrapAdded" style="position:relative;">
+            <select id="langSelectAdded" aria-label="Language selector" title="Language" style="appearance:none; background:transparent; color:var(--light); border:none; padding:6px 8px; border-radius:8px;">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="ru">RU</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+
+        <!-- Official links dropdown -->
+        <div style="position:relative;" id="officialWrapAdded">
+            <button id="officialBtnAdded" class="theme-toggle" title="Official Links" aria-haspopup="true" aria-expanded="false" style="padding:8px;">
+                <i class="fas fa-link"></i>
+            </button>
+
+            <div id="officialMenuAdded" style="display:none; position:absolute; right:0; top:42px; min-width:220px; background:rgba(10,10,20,0.95); border:1px solid rgba(138,43,226,0.25); padding:10px; border-radius:8px; backdrop-filter: blur(6px); z-index:1200;">
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a class="social-link" href="https://www.blockmango.com/#" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> <span data-i18n="link.download">Download</span></a>
+                    <a class="social-link" href="https://www.blockmango.com/#/editor?from=platform" target="_blank" rel="noopener noreferrer"><i class="fas fa-edit"></i> <span data-i18n="link.editor">Editor</span></a>
+                    <a class="social-link" href="https://pay.blockmango.com/en" target="_blank" rel="noopener noreferrer"><i class="fas fa-credit-card"></i> <span data-i18n="link.payment">Payment</span></a>
+                    <hr style="border:none; border-top:1px solid rgba(138,43,226,0.08); margin:6px 0;">
+                    <a class="social-link" href="https://discord.com/invite/SeDZ8mjWdw" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> BlockmanGo Server</a>
+                    <a class="social-link" href="https://discord.gg/8vhZuY3tHf" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> BedWars Server</a>
+                    <a class="social-link" href="https://discord.gg/UxHx6gHPDc" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Sandmod Server</a>
+                    <a class="social-link" href="https://t.me/Blockman_Go_Telegram" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END ADDED --></nav>
+
     <div class="container">
         <!-- Header -->
         <header class="header">
             <h1 class="clan-name">___BedWar___</h1>
-            <p class="subtitle">The official website of the clan</p>
+            <p1 lass="subtitle">The official website of the clan</p1>
         </header>
+<!-- ADDED: BlockmanGo Official / Community Links (inserted non-destructively) -->
+<section id="blockmango-official" class="section" style="margin-top:12px;">
+    <div class="card" style="padding:14px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+            <div>
+                <h3 class="section-title" style="margin:0;"><i class="fas fa-link"></i> <span data-i18n="block.title">BlockmanGo — Official</span></h3>
+                <p style="margin-top:6px; color:var(--secondary);" data-i18n="block.subtitle">Download, Editor & Payments — quick access.</p>
+            </div>
 
-        <!-- Search -->
+            <div style="display:flex; gap:8px; align-items:center;">
+                <a class="show-more-btn" href="https://www.blockmango.com/#" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center;">
+                    <i class="fas fa-download"></i> <span data-i18n="btn.download">Download</span>
+                </a>
+
+                <a class="show-more-btn" href="https://www.blockmango.com/#/editor?from=platform" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center;">
+                    <i class="fas fa-edit"></i> <span data-i18n="btn.editor">Editor</span>
+                </a>
+
+                <a class="show-more-btn" href="https://pay.blockmango.com/en" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center;">
+                    <i class="fas fa-credit-card"></i> <span data-i18n="btn.payment">Payment</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Community buttons -->
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+            <a class="social-link" href="https://discord.com/invite/SeDZ8mjWdw" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> BlockmanGo Server</a>
+            <a class="social-link" href="https://discord.gg/8vhZuY3tHf" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> BedWars Server</a>
+            <a class="social-link" href="https://discord.gg/UxHx6gHPDc" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Sandmod Server</a>
+            <a class="social-link" href="https://t.me/Blockman_Go_Telegram" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+        </div>
+    </div>
+</section>
+<!-- END ADDED BLOCKMANIGO -->
+
+           <!-- Search -->
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" class="search-input" id="searchInput" placeholder="Search members... (nickname / id / tags)">
@@ -944,8 +1340,103 @@
 
         <!-- Sections will be populated by JavaScript -->
         <div id="sections-container"></div>
-    </div>
 
+<style>
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+    background: rgba(42, 42, 58, 0.9);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary);
+    display: none;
+    background: rgba(10, 10, 20, 0.7);
+    border-radius: 15px;
+    margin: 20px 0;
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.no-results h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--light);
+}
+
+.no-results p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Search mode styles */
+.search-mode .section:not(.has-results) {
+    display: none !important;
+}
+
+.search-mode .section.has-results {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Search highlight animation */
+.search-mode .card:not([style*="display: none"]),
+.search-mode .compact-card:not([style*="display: none"]) {
+    animation: searchHighlight 0.6s ease;
+}
+@keyframes searchHighlight {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Mobile responsiveness for search */
+@media (max-width: 768px) {
+    .search-container {
+        margin-bottom: 15px;
+    }
+
+    .search-input {
+        padding: 10px 15px 10px 40px;
+        font-size: 0.85rem;
+    }
+
+    .search-icon {
+        left: 12px;
+        font-size: 0.8rem;
+    }
+
+    .no-results {
+        padding: 30px 15px;
+        margin: 15px 0;
+    }
+
+    .no-results i {
+        font-size: 2.5rem;
+    }
+
+    .no-results h3 {
+        font-size: 1.1rem;
+    }
+}
+</style>
     <!-- Member Modal -->
     <div class="modal" id="memberModal">
         <div class="modal-content">
@@ -968,9 +1459,43 @@
             <div class="social-links" id="socialLinks">
                 <!-- Social links will be added here -->
             </div>
-            <button class="add-social-btn" id="addSocialBtn">
-                <i class="fas fa-plus"></i> Add Discord/Telegram
+            <button class="favorite-btn" id="favoriteBtn">
+                <i class="far fa-star"></i> Add to Favorites
             </button>
+            <button class="add-social-btn" id="addSocialBtn">
+                <i class="fas fa-plus"></i> Add Discord/Telegram/WeChat
+            </button>
+        </div>
+    </div>
+
+    <!-- WeChat QR Modal -->
+    <div class="modal" id="wechatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fab fa-weixin" style="font-size: 1.5rem; color: #07C160; margin-right: 10px;"></i>
+                <div class="modal-user-info">
+                    <div class="modal-username" id="wechatUsername"></div>
+                    <div class="modal-user-id">WeChat ID: <span id="wechatId"></span></div>
+                </div>
+                <button class="modal-close" id="wechatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div style="text-align: center; padding: 20px;">
+                <div id="wechatQRCode" style="width: 200px; height: 200px; margin: 0 auto 15px; background: linear-gradient(45deg, #07C160, #09BB07); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">
+                    <div style="text-align: center;">
+                        <i class="fab fa-weixin" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                        <div>QR Code</div>
+                    </div>
+                </div>
+                <p style="color: var(--light); font-size: 0.9rem; margin-bottom: 15px;">
+                    Scan to add on WeChat
+                </p>
+                <div style="background: rgba(7, 193, 96, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(7, 193, 96, 0.3);">
+                    <strong style="color: #07C160;">WeChat ID:</strong>
+                    <span id="wechatIdDisplay" style="color: var(--light); font-family: monospace;"></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -992,6 +1517,10 @@
             <i class="fas fa-code"></i>
             <span>Devs</span>
         </a>
+        <a href="#members" class="nav-btn">
+            <i class="fas fa-users"></i>
+            <span>Members</span>
+        </a>
     </div>
 
     <!-- Scroll to Top -->
@@ -1005,6 +1534,7 @@
             "chief": {
                 title: "Clan Chief",
                 icon: "fa-crown",
+                layout: "detailed",
                 members: [
                     {
                         id: "3884743936",
@@ -1019,8 +1549,9 @@
                             { type: "dev", text: "Own Games Developer", icon: "fa-code" }
                         ],
                         social: [
-                            { type: "discord", username: "BlockmanGoTalk#1234" },
-                            { type: "telegram", username: "@BlockmanGoTalk" }
+                            { type: "discord", username: "bgtalk" },
+                            { type: "telegram", username: "@blockmangotalking" },
+                            { type: "wechat", username: "BlockmanGoTalk" }
                         ]
                     }
                 ]
@@ -1028,6 +1559,7 @@
             "elders": {
                 title: "Clan Elders",
                 icon: "fa-shield-alt",
+                layout: "detailed",
                 members: [
                     {
                         id: "1220407424",
@@ -1041,7 +1573,8 @@
                             { type: "tg", text: "BG mod in Telegram", icon: "fa-paint-brush" }
                         ],
                         social: [
-                            { type: "discord", username: "IamNotOst#5678" }
+                            { type: "discord", username: "official.ost" },
+                            { type: "telegram", username: "@IamNotOst" }
                         ]
                     },
                     {
@@ -1107,6 +1640,7 @@
             "former-elders": {
                 title: "Old Clan Elders",
                 icon: "fa-history",
+                layout: "detailed",
                 members: [
                     {
                         id: "3487699984",
@@ -1152,12 +1686,13 @@
                             { type: "assistant", text: "SB Helper", icon: "fa-tools" }
                         ],
                         social: []
-                    }
+                    },
                 ]
             },
             "developers": {
                 title: "Other Developers",
                 icon: "fa-code",
+                layout: "detailed",
                 members: [
                     {
                         id: "224",
@@ -1193,8 +1728,342 @@
                         social: []
                     }
                 ]
+            },
+            "members": {
+                title: "Clan Members",
+                icon: "fa-users",
+                layout: "compact",
+                members: [
+                    {
+                        id: "318691422",
+                        name: "I_Soto_I",
+                        avatar: "pic/318691422.png",
+                        tags: [
+                            { type: "former", text: "Old Clan Elder", icon: "fa-history" },
+                            { type: "og", text: "OG Clan Member", icon: "fa-medal" },
+                        ],
+                        social: [
+                            { type: "telegram", username: "@Sotoo129" },
+                            { type: "discord", username: "1soto29" },
+                        ]
+                    },
+                    {
+                        id: "1391025598",
+                        name: ".....armin.....",
+                        avatar: "pic/1391025598.png",
+                        tags: [
+                            { type: "member", text: "Active Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Good BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "1245395742",
+                        name: "$SahariyarNakib$",
+                        avatar: "pic/1245395742.png",
+                        tags: [
+                            { type: "member", text: "Active Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Good BW Player", icon: "fa-gamepad" },
+                            { type: "yt", text: "BGTuber", icon: "fa-link"},
+                            { type: "former", text: "Old Mod", icon: "fa-user-shield"}
+                        ],
+                        social: [
+                            { type: "discord", username: "sahariyarnakib" }
+                        ]
+                    },
+                    {
+                        id: "2367383006",
+                        name: "LegenDarysk",
+                        avatar: "pic/2367383006.png",
+                        tags: [
+                            { type: "member", text: "Active Clan Member", icon: "fa-user" },
+                            { type: "former", text: "Old CW Mod", icon: "fa-user-shield" },
+                        ],
+                        social: [
+                            { type: "discord", username: "legendary2222" }
+                        ]
+                    },
+                    {
+                        id: "1075688158",
+                        name: "XTSPIA",
+                        avatar: "pic/1075688158.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Old BW Player", icon: "fa-user-shield"}
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "773043310",
+                        name: "#165#xKris_STK",
+                        avatar: "pic/773043310.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-user-shield"}
+                        ],
+                        social: []
+                    },
+                    // New members added below
+                    {
+                        id: "3731132176",
+                        name: "AYMAN69",
+                        avatar: "pic/3731132176.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "bgtuber", text: "BGTuber", icon: "fa-video" },
+                            { type: "moderator", text: "BW Mod", icon: "fa-user-shield" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "938698174",
+                        name: "Aether",
+                        avatar: "pic/938698174.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Active BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "a3th.r" }
+                        ]
+                    },
+                    {
+                        id: "2383236894",
+                        name: "Notch@all :D",
+                        avatar: "pic/2383236894.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "bug-hunter", text: "Bug Hunter", icon: "fa-bug" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "3176305088",
+                        name: "Sanchit",
+                        avatar: "pic/3176305088.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "former", text: "Old BW Mod", icon: "fa-user-shield" },
+                            { type: "additional", text: "Active BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "agitation.14" }
+                        ]
+                    },
+                    {
+                        id: "2951662526",
+                        name: "IamNotKael",
+                        avatar: "pic/2951662526.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "kael_bmg" }
+                        ]
+                    },
+                    {
+                        id: "599473839",
+                        name: "ARM_LEGEND_BG",
+                        avatar: "pic/599473839.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "6250565358",
+                        name: "Equonz",
+                        avatar: "pic/6250565358.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" },
+                            { type: "moderator", text: "BW Mod", icon: "fa-user-shield" }
+                        ],
+                        social: [
+                            { type: "discord", username: "zoro_33_" }
+                        ]
+                    },
+                    {
+                        id: "2565128366",
+                        name: "helloyess",
+                        avatar: "pic/2565128366.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "6505785790",
+                        name: "YT-KAYER",
+                        avatar: "pic/6505785790.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "bgtuber", text: "BGTuber", icon: "fa-video" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "908350926",
+                        name: "bailey",
+                        avatar: "pic/908350926.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" },
+                            { type: "former", text: "Old Builder", icon: "fa-hammer" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "5840721918",
+                        name: "Referee_JimmyXd",
+                        avatar: "pic/5840721918.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "moderator", text: "BW Mod", icon: "fa-user-shield" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "74304239",
+                        name: "PandaCrunch",
+                        avatar: "pic/74304239.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Active BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "318347375",
+                        name: "xKasai.",
+                        avatar: "pic/318347375.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "bgtuber", text: "BGTuber", icon: "fa-video" },
+                            { type: "map-builder", text: "Map Builder", icon: "fa-map" },
+                            { type: "additional", text: "#1 BlockObby", icon: "fa-trophy" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "3939425936",
+                        name: "Referee_Frames",
+                        avatar: "pic/3939425936.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "former", text: "Old BW Mod", icon: "fa-user-shield" },
+                            { type: "former", text: "Old BG Mod", icon: "fa-user-shield" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "watar_777" }
+                        ]
+                    },
+                    {
+                        id: "405113582",
+                        name: "GOLD_LIKE_BG",
+                        avatar: "pic/405113582.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "assistant", text: "BG Helper", icon: "fa-tools" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "gold_like_bg" },
+                            { type: "telegram", username: "gold_like_bg" }
+                        ]
+                    },
+                    {
+                        id: "35000",
+                        name: "IamNotOst",
+                        avatar: "pic/35000.png",
+                        tags: [
+                            { type: "bot", text: "Bot", icon: "fa-robot" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "3305213824",
+                        name: "UttKaRsHHH",
+                        avatar: "pic/3305213824.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "uttkarsh._.08" }
+                        ]
+                    },
+                    {
+                        id: "19179759",
+                        name: "YouTube°DYQ BG",
+                        avatar: "pic/19179759.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "former", text: "Old BGTuber", icon: "fa-video" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "6604658142",
+                        name: "lIyas-BG",
+                        avatar: "pic/6604658142.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: []
+                    },
+                    {
+                        id: "943815214",
+                        name: "ItzOver",
+                        avatar: "pic/943815214.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "Active BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "over.py" }
+                        ]
+                    },
+                    {
+                        id: "249555200",
+                        name: "Referee_MarksBG",
+                        avatar: "pic/249555200.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "moderator", text: "BG Mod", icon: "fa-user-shield" },
+                            { type: "moderator", text: "BW Mod", icon: "fa-user-shield" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "marksbg_" }
+                        ]
+                    },
+                    {
+                        id: "2931159600",
+                        name: "Outside",
+                        avatar: "pic/2931159600.png",
+                        tags: [
+                            { type: "member", text: "Clan Member", icon: "fa-user" },
+                            { type: "additional", text: "BW Player", icon: "fa-gamepad" }
+                        ],
+                        social: [
+                            { type: "discord", username: "outsidebg" }
+                        ]
+                    }
+                ]
             }
         };
+
+        // Current member for modal
+        let currentMember = null;
 
         // Function to generate HTML from member data
         function generateSections() {
@@ -1211,90 +2080,201 @@
                 sectionTitle.innerHTML = `<i class="fas ${sectionData.icon}"></i> ${sectionData.title}:`;
                 section.appendChild(sectionTitle);
 
-                const cardsContainer = document.createElement('div');
-                cardsContainer.className = 'cards-container';
+                if (sectionData.layout === 'compact') {
+                    // Create compact grid with show more functionality
+                    const cardsContainer = document.createElement('div');
+                    cardsContainer.className = 'compact-grid';
 
-                sectionData.members.forEach(member => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.setAttribute('data-roles', member.tags.map(tag => tag.type).join(' '));
-                    card.style.animationPlayState = 'running';
+                    // Show first 6 members, hide the rest
+                    const visibleMembers = sectionData.members.slice(0, 6);
+                    const hiddenMembers = sectionData.members.slice(6);
 
-                    // Store member data for modal
-                    card.setAttribute('data-member', JSON.stringify(member));
-
-                    const cardHeader = document.createElement('div');
-                    cardHeader.className = 'card-header';
-
-                    const avatar = document.createElement('img');
-                    avatar.src = member.avatar;
-                    avatar.alt = member.name;
-                    avatar.className = 'avatar';
-
-                    const userInfo = document.createElement('div');
-                    userInfo.className = 'user-info';
-
-                    const username = document.createElement('div');
-                    username.className = 'username';
-                    username.innerHTML = `${member.name} <span class="verified"><i class="fas fa-check-circle"></i></span>`;
-
-                    const userId = document.createElement('div');
-                    userId.className = 'user-id';
-                    userId.textContent = `ID: ${member.id}`;
-
-                    userInfo.appendChild(username);
-                    userInfo.appendChild(userId);
-
-                    cardHeader.appendChild(avatar);
-                    cardHeader.appendChild(userInfo);
-
-                    const cardBody = document.createElement('div');
-                    cardBody.className = 'card-body';
-
-                    const tags = document.createElement('div');
-                    tags.className = 'tags';
-
-                    member.tags.forEach(tag => {
-                        const tagElement = document.createElement('div');
-                        tagElement.className = `tag tag-${tag.type}`;
-                        tagElement.innerHTML = `<i class="fas ${tag.icon}"></i> ${tag.text}`;
-                        tags.appendChild(tagElement);
+                    // Add visible members
+                    visibleMembers.forEach(member => {
+                        cardsContainer.appendChild(createCompactCard(member));
                     });
 
-                    cardBody.appendChild(tags);
+                    section.appendChild(cardsContainer);
 
-                    card.appendChild(cardHeader);
-                    card.appendChild(cardBody);
-                    cardsContainer.appendChild(card);
-                });
+                    // Add show more button if there are hidden members
+                    if (hiddenMembers.length > 0) {
+                        const showMoreContainer = document.createElement('div');
+                        showMoreContainer.className = 'show-more';
 
-                section.appendChild(cardsContainer);
+                        const showMoreBtn = document.createElement('button');
+                        showMoreBtn.className = 'show-more-btn';
+                        showMoreBtn.innerHTML = `<i class="fas fa-chevron-down"></i> Show ${hiddenMembers.length} More`;
+
+                        showMoreBtn.addEventListener('click', function() {
+                            // Add hidden members
+                            hiddenMembers.forEach(member => {
+                                cardsContainer.appendChild(createCompactCard(member));
+                            });
+
+                            // Remove show more button
+                            showMoreContainer.remove();
+
+                            // Reinitialize event listeners for the new cards
+                            document.querySelectorAll('.compact-card').forEach(card => {
+                                card.addEventListener('click', function() {
+                                    const memberData = JSON.parse(this.getAttribute('data-member'));
+                                    openMemberModal(memberData);
+                                });
+                            });
+                        });
+
+                        showMoreContainer.appendChild(showMoreBtn);
+                        section.appendChild(showMoreContainer);
+                    }
+                } else {
+                    // Detailed layout (original cards)
+                    const cardsContainer = document.createElement('div');
+                    cardsContainer.className = 'cards-container';
+
+                    sectionData.members.forEach(member => {
+                        cardsContainer.appendChild(createDetailedCard(member));
+                    });
+
+                    section.appendChild(cardsContainer);
+                }
+
                 container.appendChild(section);
             }
 
             // Add event listeners to cards
-            document.querySelectorAll('.card').forEach(card => {
+            document.querySelectorAll('.card, .compact-card').forEach(card => {
                 card.addEventListener('click', function() {
                     const memberData = JSON.parse(this.getAttribute('data-member'));
                     openMemberModal(memberData);
                 });
             });
+
+            // Add copy functionality to IDs
+            addCopyFunctionality();
+        }
+
+        // Create detailed card (original style)
+        function createDetailedCard(member) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-roles', member.tags.map(tag => tag.type).join(' '));
+            card.style.animationPlayState = 'running';
+            card.setAttribute('data-member', JSON.stringify(member));
+
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'card-header';
+
+            const avatar = document.createElement('img');
+            avatar.src = member.avatar;
+            avatar.alt = member.name;
+            avatar.className = 'avatar';
+
+            const userInfo = document.createElement('div');
+            userInfo.className = 'user-info';
+
+            const username = document.createElement('div');
+            username.className = 'username';
+            username.innerHTML = `${member.name} <span class="verified"><i class="fas fa-check-circle"></i></span>`;
+
+            const userId = document.createElement('div');
+            userId.className = 'user-id';
+            userId.textContent = `ID: ${member.id}`;
+            userId.title = 'Click to copy ID';
+
+            userInfo.appendChild(username);
+            userInfo.appendChild(userId);
+
+            cardHeader.appendChild(avatar);
+            cardHeader.appendChild(userInfo);
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            const tags = document.createElement('div');
+            tags.className = 'tags';
+
+            member.tags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = `tag tag-${tag.type}`;
+                tagElement.innerHTML = `<i class="fas ${tag.icon}"></i> ${tag.text}`;
+                tags.appendChild(tagElement);
+            });
+
+            cardBody.appendChild(tags);
+
+            // Add quick actions
+            const quickActions = document.createElement('div');
+            quickActions.className = 'quick-actions';
+            quickActions.innerHTML = `
+                <button class="quick-action-btn" title="Send message">
+                    <i class="fas fa-envelope"></i>
+                </button>
+                <button class="quick-action-btn" title="Add to favorites">
+                    <i class="far fa-star"></i>
+                </button>
+            `;
+            card.appendChild(quickActions);
+
+            card.appendChild(cardHeader);
+            card.appendChild(cardBody);
+
+            return card;
+        }
+
+        // Create compact card for many members
+        function createCompactCard(member) {
+            const card = document.createElement('div');
+            card.className = 'compact-card';
+            card.setAttribute('data-member', JSON.stringify(member));
+
+            const avatar = document.createElement('img');
+            avatar.src = member.avatar;
+            avatar.alt = member.name;
+            avatar.className = 'compact-avatar';
+
+            const name = document.createElement('div');
+            name.className = 'compact-name';
+            name.textContent = member.name;
+
+            const id = document.createElement('div');
+            id.className = 'compact-id';
+            id.textContent = `ID: ${member.id}`;
+            id.title = 'Click to copy ID';
+
+            // Add quick actions
+            const quickActions = document.createElement('div');
+            quickActions.className = 'quick-actions';
+            quickActions.innerHTML = `
+                <button class="quick-action-btn" title="Add to favorites">
+                    <i class="far fa-star"></i>
+                </button>
+            `;
+
+            card.appendChild(quickActions);
+            card.appendChild(avatar);
+            card.appendChild(name);
+            card.appendChild(id);
+
+            return card;
         }
 
         // Modal functionality
         function openMemberModal(member) {
+            currentMember = member;
             const modal = document.getElementById('memberModal');
             const modalAvatar = document.getElementById('modalAvatar');
             const modalName = document.getElementById('modalName');
             const modalUserId = document.getElementById('modalUserId');
             const modalTags = document.getElementById('modalTags');
             const socialLinks = document.getElementById('socialLinks');
+            const favoriteBtn = document.getElementById('favoriteBtn');
 
             // Set modal content
             modalAvatar.src = member.avatar;
             modalAvatar.alt = member.name;
             modalName.textContent = member.name;
             modalUserId.textContent = `ID: ${member.id}`;
+            modalUserId.title = 'Click to copy ID';
 
             // Set tags
             modalTags.innerHTML = '';
@@ -1309,33 +2289,167 @@
             socialLinks.innerHTML = '';
             member.social.forEach(social => {
                 const socialLink = document.createElement('a');
-                socialLink.href = '#';
+
+                let href = '#';
+                let iconClass = 'fab fa-';
+
+                switch(social.type) {
+                    case 'discord':
+                        href = `https://discord.com/users/${social.username}`;
+                        iconClass += 'discord';
+                        break;
+                    case 'telegram':
+                        href = `https://t.me/${social.username.replace('@', '')}`;
+                        iconClass += 'telegram';
+                        break;
+                    case 'wechat':
+                        href = '#';
+                        iconClass = 'fab fa-weixin';
+                        break;
+                }
+
+                socialLink.href = href;
                 socialLink.className = 'social-link';
-                socialLink.innerHTML = `<i class="fab fa-${social.type}"></i> ${social.username}`;
+                socialLink.target = '_blank';
+                socialLink.rel = 'noopener noreferrer';
+                socialLink.innerHTML = `<i class="${iconClass}"></i> ${social.username}`;
+
+                // Add click handler for WeChat to show QR code
+                if (social.type === 'wechat') {
+                    socialLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showWeChatQR(member.name, social.username);
+                    });
+                }
+
                 socialLinks.appendChild(socialLink);
             });
+
+            // Update favorite button
+            updateFavoriteButton(member.id);
 
             // Show modal
             modal.classList.add('active');
         }
 
-        // Close modal
+        // Show WeChat QR Modal
+        function showWeChatQR(name, wechatId) {
+            const modal = document.getElementById('wechatModal');
+            const username = document.getElementById('wechatUsername');
+            const idDisplay = document.getElementById('wechatIdDisplay');
+            const idText = document.getElementById('wechatId');
+
+            username.textContent = `${name}'s WeChat`;
+            idDisplay.textContent = wechatId;
+            idText.textContent = wechatId;
+
+            modal.classList.add('active');
+        }
+
+        // Close WeChat Modal
+        document.getElementById('wechatClose').addEventListener('click', function() {
+            document.getElementById('wechatModal').classList.remove('active');
+        });
+
+        // Close WeChat modal when clicking outside
+        document.getElementById('wechatModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Close member modal
         document.getElementById('modalClose').addEventListener('click', function() {
             document.getElementById('memberModal').classList.remove('active');
         });
 
-        // Add social button functionality
-        document.getElementById('addSocialBtn').addEventListener('click', function() {
-            alert('This would open a form to add Discord/Telegram links in a real application.');
-            // In a real app, you would implement a form to add social links
-        });
-
-        // Close modal when clicking outside
+        // Close member modal when clicking outside
         document.getElementById('memberModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 this.classList.remove('active');
             }
         });
+
+        // Add social button functionality
+        document.getElementById('addSocialBtn').addEventListener('click', function() {
+            showNotification('Social link feature would open a form in a real application');
+        });
+
+        // Favorite functionality
+        document.getElementById('favoriteBtn').addEventListener('click', function() {
+            if (currentMember) {
+                toggleFavorite(currentMember);
+            }
+        });
+
+        // Toggle favorite
+        function toggleFavorite(member) {
+            let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const index = favorites.findIndex(fav => fav.id === member.id);
+
+            if (index > -1) {
+                favorites.splice(index, 1);
+                showNotification(`Removed ${member.name} from favorites`);
+            } else {
+                favorites.push(member);
+                showNotification(`Added ${member.name} to favorites!`);
+            }
+
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoriteButton(member.id);
+        }
+
+        // Update favorite button state
+        function updateFavoriteButton(memberId) {
+            const favoriteBtn = document.getElementById('favoriteBtn');
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const isFavorited = favorites.some(fav => fav.id === memberId);
+
+            if (isFavorited) {
+                favoriteBtn.innerHTML = '<i class="fas fa-star"></i> Remove from Favorites';
+                favoriteBtn.classList.add('favorited');
+            } else {
+                favoriteBtn.innerHTML = '<i class="far fa-star"></i> Add to Favorites';
+                favoriteBtn.classList.remove('favorited');
+            }
+        }
+
+        // Add copy functionality to IDs
+        function addCopyFunctionality() {
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.user-id') || e.target.closest('.compact-id') || e.target.closest('.modal-user-id')) {
+                    const idElement = e.target.closest('.user-id') || e.target.closest('.compact-id') || e.target.closest('.modal-user-id');
+                    let userId = idElement.textContent.replace('ID: ', '');
+
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(userId).then(() => {
+                        showNotification(`Copied ID: ${userId}`);
+                    }).catch(() => {
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea');
+                        textArea.value = userId;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        showNotification(`Copied ID: ${userId}`);
+                    });
+                }
+            });
+        }
+
+        // Notification system
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
 
         // Theme System
         const themeToggle = document.getElementById('themeToggle');
@@ -1353,21 +2467,21 @@
             option.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const selectedTheme = option.getAttribute('data-theme');
-                
+
                 // Get the HTML element
                 const html = document.documentElement;
-                
+
                 // Remove all existing theme attributes
                 html.removeAttribute('data-theme');
-                
+
                 // Apply new theme if not empty
                 if (selectedTheme) {
                     html.setAttribute('data-theme', selectedTheme);
                 }
-                
+
                 // Save to localStorage
                 localStorage.setItem('selectedTheme', selectedTheme);
-                
+
                 // Close selector
                 themeSelector.classList.remove('active');
             });
@@ -1386,10 +2500,10 @@
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
-            
+
             // Generate sections from data
             generateSections();
-            
+
             // Initialize other functionality
             initializeApp();
         });
@@ -1398,7 +2512,7 @@
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 25;
-            
+
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.style.position = 'absolute';
@@ -1410,7 +2524,7 @@
                 particle.style.top = Math.random() * 100 + '%';
                 particle.style.animation = `float ${Math.random() * 10 + 10}s infinite ease-in-out`;
                 particle.style.animationDelay = Math.random() * 5 + 's';
-                
+
                 particlesContainer.appendChild(particle);
             }
         }
@@ -1419,7 +2533,7 @@
         function initializeApp() {
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.getElementById('navMenu');
-                
+
             navToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 navToggle.innerHTML = navMenu.classList.contains('active') 
@@ -1427,53 +2541,53 @@
                     : '<i class="fas fa-bars"></i>';
             });
 
-            // Search Functionality
+           // Search Functionality
             const searchInput = document.getElementById('searchInput');
             const noResults = document.getElementById('noResults');
             const container = document.querySelector('.container');
-                
+
             searchInput.addEventListener('input', () => {
                 const searchTerm = searchInput.value.toLowerCase().trim();
                 const cards = document.querySelectorAll('.card');
                 const sections = document.querySelectorAll('.section');
                 let foundResults = false;
                 let totalVisibleCards = 0;
-                    
+
                 // Reset all cards and sections
                 cards.forEach(card => {
                     card.style.display = 'block';
                 });
-                    
+
                 sections.forEach(section => {
                     section.classList.remove('has-results');
                 });
-                    
+
                 // If search is empty, show all sections
                 if (searchTerm === '') {
                     container.classList.remove('search-mode');
                     noResults.style.display = 'none';
                     return;
                 }
-                    
+
                 // Activate search mode
                 container.classList.add('search-mode');
-                    
+
                 // Search through cards
                 cards.forEach(card => {
                     const member = JSON.parse(card.getAttribute('data-member'));
                     const username = member.name.toLowerCase();
                     const userId = member.id.toLowerCase();
                     const tags = member.tags.map(tag => tag.text.toLowerCase());
-                        
+
                     const matchesSearch = username.includes(searchTerm) || 
                                        userId.includes(searchTerm) ||
                                        tags.some(tag => tag.includes(searchTerm));
-                        
+
                     if (matchesSearch) {
                         card.style.display = 'block';
                         foundResults = true;
                         totalVisibleCards++;
-                            
+
                         // Mark section as having results
                         const section = card.closest('.section');
                         if (section) {
@@ -1483,7 +2597,7 @@
                         card.style.display = 'none';
                     }
                 });
-                    
+
                 if (foundResults) {
                     noResults.style.display = 'none';
                 } else {
@@ -1495,16 +2609,16 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                        
+
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                        
+
                     if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 60,
                             behavior: 'smooth'
                         });
-                        
+
                         if (window.innerWidth < 768) {
                             navMenu.classList.remove('active');
                             navToggle.innerHTML = '<i class="fas fa-bars"></i>';
@@ -1517,26 +2631,27 @@
             const navItems = document.querySelectorAll('.nav-item');
             const bottomNavItems = document.querySelectorAll('.nav-btn');
             const sections = document.querySelectorAll('.section');
-                
+
             function updateActiveNav() {
                 let currentSection = '';
-                    
+
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-                        
+
                     if (window.scrollY >= sectionTop - 80) {
                         currentSection = section.id;
                     }
                 });
-                    
+
                 navItems.forEach(item => {
                     item.classList.remove('active');
                     if (item.getAttribute('href') === `#${currentSection}`) {
                         item.classList.add('active');
                     }
                 });
-                    
+
+
                 bottomNavItems.forEach(item => {
                     item.classList.remove('active');
                     if (item.getAttribute('href') === `#${currentSection}`) {
@@ -1547,10 +2662,10 @@
 
             // Scroll to Top Button
             const scrollTopBtn = document.getElementById('scrollTop');
-                
+
             window.addEventListener('scroll', () => {
                 updateActiveNav();
-                    
+
                 if (window.scrollY > 300) {
                     scrollTopBtn.classList.add('active');
                 } else {
@@ -1589,5 +2704,97 @@
             updateActiveNav();
         }
     </script>
+
+<!-- ADDED: language selector + official menu script (non-destructive) -->
+<script>
+(function(){
+    const i18n = {
+        en: {
+            'nav.chief': 'Chief','nav.elders':'Elders','nav.oldElders':'Old Elders','nav.devs':'Devs','nav.other':'Other People','nav.members':'Clan Members',
+            'block.title':'BlockmanGo — Official','block.subtitle':'Download, Editor & Payments — quick access.',
+            'btn.download':'Download','btn.editor':'Editor','btn.payment':'Payment',
+            'link.download':'Download','link.editor':'Editor','link.payment':'Payment'
+        },
+        es: { 'nav.chief':'Jefe','nav.elders':'Ancianos','nav.oldElders':'Antiguos Ancianos','nav.devs':'Desarrolladores','nav.other':'Otras Personas','nav.members':'Miembros',
+            'block.title':'BlockmanGo — Oficial','block.subtitle':'Descarga, Editor y Pagos — acceso rápido.',
+            'btn.download':'Descargar','btn.editor':'Editor','btn.payment':'Pago','link.download':'Descargar','link.editor':'Editor','link.payment':'Pago' },
+        fr: { 'nav.chief':'Chef','nav.elders':'Anciens','nav.oldElders':'Anciens (Hist.)','nav.devs':'Devs','nav.other':'Autres','nav.members':'Membres',
+            'block.title':'BlockmanGo — Officiel','block.subtitle':'Téléchargement, Éditeur & Paiements — accès rapide.',
+            'btn.download':'Télécharger','btn.editor':'Éditeur','btn.payment':'Paiement','link.download':'Télécharger','link.editor':'Éditeur','link.payment':'Paiement' },
+        de: { 'nav.chief':'Chef','nav.elders':'Älteste','nav.oldElders':'Ehem. Älteste','nav.devs':'Entwickler','nav.other':'Andere','nav.members':'Mitglieder',
+            'block.title':'BlockmanGo — Offiziell','block.subtitle':'Download, Editor & Zahlungen — Schnellzugriff.',
+            'btn.download':'Herunterladen','btn.editor':'Editor','btn.payment':'Zahlung','link.download':'Herunterladen','link.editor':'Editor','link.payment':'Zahlung' },
+        ru: { 'nav.chief':'Вождь','nav.elders':'Старейшины','nav.oldElders':'Бывшие старейшины','nav.devs':'Разработчики','nav.other':'Другие','nav.members':'Участники',
+            'block.title':'BlockmanGo — Официально','block.subtitle':'Загрузка, Редактор и Платежи — быстрый доступ.',
+            'btn.download':'Скачать','btn.editor':'Редактор','btn.payment':'Оплата','link.download':'Скачать','link.editor':'Редактор','link.payment':'Оплата' },
+        zh: { 'nav.chief':'酋长','nav.elders':'长老','nav.oldElders':'前长老','nav.devs':'开发者','nav.other':'其他人','nav.members':'成员',
+            'block.title':'BlockmanGo — 官方','block.subtitle':'下载、编辑器与支付 — 快速访问。',
+            'btn.download':'下载','btn.editor':'编辑器','btn.payment':'支付','link.download':'下载','link.editor':'编辑器','link.payment':'支付' }
+    };
+
+    function applyTranslations(lang) {
+    const dict = i18n[lang] || i18n.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!key) return;
+        const text = dict[key];
+        if (typeof text === 'undefined') return;
+
+        // If element contains an <i> icon child, append text node after it
+        if (el.querySelector && el.querySelector('i')) {
+            // remove existing text nodes to avoid duplicates
+            Array.from(el.childNodes).forEach(n => { 
+                if (n.nodeType === 3) n.remove(); 
+            });
+            el.appendChild(document.createTextNode(' ' + text));
+        } else {
+            el.textContent = text;
+        }
+    });
+
+    // update subtitle if present
+    const subtitle = document.querySelector('.subtitle');
+    if (subtitle && dict['block.subtitle']) subtitle.textContent = dict['block.subtitle'];
+}
+
+    function setLanguage(lang) {
+        localStorage.setItem('siteLang', lang);
+        applyTranslations(lang);
+        const sel = document.getElementById('langSelectAdded');
+        if (sel) sel.value = lang;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const saved = localStorage.getItem('siteLang') || 'en';
+        const sel = document.getElementById('langSelectAdded');
+        if (sel) {
+            sel.value = saved;
+            sel.addEventListener('change', function() {
+                setLanguage(this.value);
+                try { showNotification && showNotification('Language changed'); } catch(e){}
+            });
+        }
+        applyTranslations(saved);
+
+        // official menu toggle
+        const officialBtn = document.getElementById('officialBtnAdded');
+        const officialMenu = document.getElementById('officialMenuAdded');
+        if (officialBtn && officialMenu) {
+            officialBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = officialMenu.style.display === 'block';
+                officialMenu.style.display = isOpen ? 'none' : 'block';
+                officialBtn.setAttribute('aria-expanded', String(!isOpen));
+            });
+            document.addEventListener('click', function(e) {
+                if (!officialMenu.contains(e.target) && e.target !== officialBtn) {
+                    officialMenu.style.display = 'none';
+                    officialBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
+})();
+</script>
 </body>
-    </html>
+</html>
